@@ -1,3 +1,6 @@
+ol, ul {list-style:none;}
+
+
 body {
   font-family: "Lucida Grande", "Lucida Sans", Verdana, Helvetica, Arial, sans-serif;
   font-size: .8em;
@@ -150,8 +153,9 @@ a.never_built, a.never_built:visited {
   width: 24%;
 }
 
-.project table.project_pane td.builder_control {
-  width: 12%;
+.project .project_pane .builder_control {
+  display:block;
+  width:113px;
 }
 
 .project table.project_pane td.build_details {
@@ -175,6 +179,7 @@ a.never_built, a.never_built:visited {
   width: 110px;
   height: 23px;
   border: none;
+  margin-top:7px;
   background-color: transparent;
 }
 .project .build_button {
@@ -197,6 +202,10 @@ a.never_built, a.never_built:visited {
 }
 
 .project .recent_builds .builds_list {
+  float: left;
+  padding:0 0 0 13px;
+}
+.project .recent_builds .commit-picture {
   float: left;
 }
 

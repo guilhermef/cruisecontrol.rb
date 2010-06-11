@@ -211,8 +211,15 @@ EOF
   end
 
   def abbreviated_label
-    revision, rebuild_number = label.split('.')
-    [revision[0..6], rebuild_number].compact.join('.')
+    begin
+      get_email
+    rescue
+      revision, rebuild_number = label.split('.')
+      [revision[0..6], rebuild_number].compact.join('.')
+    end
   end
-
+  
+  def get_email
+    self.changeset.split("<")[1].split(">")[0]
+  end
 end

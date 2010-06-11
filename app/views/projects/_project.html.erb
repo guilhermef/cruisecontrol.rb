@@ -1,14 +1,12 @@
 <div id="project_<%= project.name %>" class="project build_<%= project.last_complete_build_status %>">
-<table class="project_pane">
-<tr>
+<div class="project_pane">
 
-  <td class="project_summary">
 
-    <div>
+  <span class="project_summary">
+
       <span class="project_name">
         <%= link_to project.name, :action => 'show', :id => project.name %>
       </span>
-    </div>
 
     <div class="recent_builds">
 
@@ -21,20 +19,23 @@
       </span>
 
       <% unless recent_builds.empty? %>
-        <div class="builds_list">
+		<span class="commit-picture">
+			<img src="<%= gravatar_url_for project.last_build.get_email, { :rating => 'R' } %>"/>
+		</span>
+        <ul class="builds_list">
           <% recent_builds.each do |build| %>
             <% if build == recent_builds.first %>
-                <div class="build_summary"><%= link_to_build_with_elapsed_time(project, build) %></div>
+                <li class="build_summary"><%= link_to_build_with_elapsed_time(project, build) %></li>
             <% else %>
-                <div class="build_summary"><%= link_to_build(project, build) %></div>
+                <li class="build_summary"><%= link_to_build(project, build) %></li>
             <% end %>
           <% end %>
-        </div>
+        </ul>
       <% end %>
     </div>
-  </td>
+  </span>
 
-  <td class="builder_control">
+  <span class="builder_control">
     <div class="buttons">
       <% form_remote_tag(
              :url => { :action => 'build', :id => project },
@@ -58,9 +59,9 @@
       <% end %>
     </div>
     <%= display_builder_state(project.builder_state_and_activity) %>
-  </td>
+  </span>
 
-  <td class="build_details">
+  <span class="build_details">
     <% latest_build = recent_builds.first %>
     <% if latest_build %>
       <% if latest_build.incomplete? %>
@@ -76,7 +77,6 @@
       <% end %>
       <div class="error_message"><%= simple_format(project.builder_error_message) %></div>
     <% end %>   
-  </td>
-</tr>
-</table>
+  </span>
+</div>
 </div>
