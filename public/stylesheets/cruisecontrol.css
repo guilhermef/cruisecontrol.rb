@@ -203,6 +203,7 @@ a.never_built, a.never_built:visited {
 
 .project .recent_builds .builds_list {
   float: left;
+  margin:0;
   padding:0 0 0 13px;
 }
 .project .recent_builds .commit-picture {
