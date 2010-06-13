@@ -20,7 +20,7 @@
 
       <% unless recent_builds.empty? %>
 		<span class="commit-picture">
-			<img src="<%= gravatar_url_for project.last_build.get_email, { :rating => 'R' } %>"/>
+			<img src="<%= gravatar_url_for project.last_build.email, { :rating => 'R' } %>"/>
 		</span>
         <ul class="builds_list">
           <% recent_builds.each do |build| %>

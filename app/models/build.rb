@@ -212,14 +212,32 @@ EOF
 
   def abbreviated_label
     begin
-      get_email
+      commit_message
     rescue
       revision, rebuild_number = label.split('.')
       [revision[0..6], rebuild_number].compact.join('.')
     end
   end
   
-  def get_email
-    self.changeset.split("<")[1].split(">")[0]
+  def email
+    begin
+      author.split("<")[1].split(">")[0]
+    rescue
+      "no-email-yet"
+    end
+  end
+  def author
+    begin
+      /.*\{author:(.*)\}.*/.match(changeset)[1]
+    rescue
+      throw "FirstBuild"
+    end
+  end
+  def commit_message
+    begin
+      /.*\{message:(.*)\}.*/.match(changeset)[1]
+    rescue
+      throw "FirstBuild"
+    end
   end
 end
