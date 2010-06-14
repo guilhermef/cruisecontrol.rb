@@ -68,6 +68,7 @@ class Test::Unit::TestCase
     build.stubs(:label).returns(label)
     build.stubs(:abbreviated_label).returns(label)
     build.stubs(:status).returns(status)
+    build.stubs(:email).returns("email")
     build.stubs(:time).returns(time)
     build.stubs(:failed?).returns(status == 'failed')
     build.stubs(:successful?).returns(status == 'success')

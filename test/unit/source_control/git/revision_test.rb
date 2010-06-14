@@ -16,17 +16,17 @@ module SourceControl
     end
     
     def test_should_have_sensible_to_s
-      assert_equal("Revision ...1234 committed by jeremy\n",
+      assert_equal("Revision ...1234 {author:jeremy}\n",
                    Git::Revision.new(:number => "1234", :author => "jeremy").to_s)
-      assert_equal("Revision ...1234 committed by jeremy on 2000-01-02 03:04:00\n",
+      assert_equal("Revision ...1234 {author:jeremy} on 2000-01-02 03:04:00\n",
                    Git::Revision.new(:number => "1234", :author => "jeremy", :time => Time.parse("2000-01-02 03:04:00")).to_s)
     end
     
     def test_should_convert_to_full_diff_message
-      expected_message = %{Revision ...7652 committed by Scott Tamosunas on 2000-01-02 03:04:00
+      expected_message = %{Revision ...7652 {author:Scott Tamosunas} on 2000-01-02 03:04:00
 
-    fixed iphone cruise Rakefile
-    and another line
+    {message:fixed iphone cruise Rakefile
+    and another line}
 
  iphone/Rakefile                            |    2 +-
  iphone/ibob/ibob.xcodeproj/pivotal.pbxuser | 2009 +++-------------------------
