@@ -116,50 +116,44 @@ a.never_built, a.never_built:visited {
 /* Project dashboard */
 
 .project {
-  margin: 0.5em 0;
+  background:none repeat scroll 0 0 #EEEEEE;
+  border:2px solid #CCCCCC;
+  float:left;
+  margin: 10px;
   padding: 0 1.5em;
   min-height: 9.2em;
+  width:553px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+
 }  
 
-.build_success, .build_never_built, .build_incomplete, .build_failed {
-  background-position: bottom;
-  background-repeat: repeat-x;
-  margin-left: -2.5em;
+.project .project_pane {
+  margin-top:7px;
 }
 
 .build_never_built, .build_incomplete {
-  background-image: url(../images/gray_gradient.png);
+
 }
 
 .build_success {
-  background-image: url(../images/gray_gradient.png);
+  border-color: #66CD00;
 }
 
 .build_failed {
-  background-image: url(../images/red_gradient.png);
-}
-
-.project table.project_pane {
-  padding-left: .75em;
-  width: 100%;
-}
-
-.project table.project_pane td {
-  vertical-align: top;
-  text-align: left;
-}
-
-.project table.project_pane td.project_summary {
-  width: 24%;
+  border-color: #CD2626;
 }
 
 .project .project_pane .builder_control {
-  display:block;
-  width:113px;
+  width:131px;
+  float: right;
 }
-
-.project table.project_pane td.build_details {
-  width: 64%;
+.project .project_pane .build_details {
+  clear:both;
+  display:block;
+  width:393px;
 }
 
 .project .project_summary .buttons {
@@ -183,7 +177,11 @@ a.never_built, a.never_built:visited {
   background-color: transparent;
 }
 .project .build_button {
-  background-image:url(../images/button.png);
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+  background:none repeat scroll 0 0 #CCCCCC;
   cursor: pointer;
 }
 
@@ -193,10 +191,12 @@ a.never_built, a.never_built:visited {
 }
 
 .project .recent_builds {
+  margin:0 0 7px;
   color: #666;
 }
 
 .project .recent_builds .lead {
+  display:none;
   float: left;
   padding-right: 0.5em;
 }
@@ -205,6 +205,7 @@ a.never_built, a.never_built:visited {
   float: left;
   margin:0;
   padding:0 0 0 13px;
+  width:400px;
 }
 .project .recent_builds .commit-picture {
   float: left;
@@ -215,6 +216,7 @@ a.never_built, a.never_built:visited {
 .project .builder_control .builder_status_source_control_error,
 .project .builder_control .builder_status_timed_out {
   font-weight: bold;
+  padding-bottom:5px;
   padding-top: 5px;
   padding-left: 25px;
   background-image: url(../images/spinner_error.gif);
@@ -226,6 +228,7 @@ a.never_built, a.never_built:visited {
 .project .builder_control .builder_status_build_requested,
 .project .builder_control .builder_status_queued {
   font-weight: bold;
+  padding-bottom:5px;
   padding-top: 5px;
   padding-left: 25px;
   background-image: url(../images/spinner.gif);
