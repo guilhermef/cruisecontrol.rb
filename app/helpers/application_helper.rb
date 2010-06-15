@@ -97,5 +97,13 @@ module ApplicationHelper
       :only_path => false,
       :controller => 'avatar.php'
       }.merge(options)) 
-  end    
+  end 
+  
+  def show_mail_builder (email) 
+    if email != nil && email != '' && email != 'no-email-yet' then
+      email
+    else
+      " First build or this build don't has an email"
+    end
+  end
 end
