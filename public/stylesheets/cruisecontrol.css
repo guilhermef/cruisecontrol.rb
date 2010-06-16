@@ -121,7 +121,7 @@ a.never_built, a.never_built:visited {
   float:left;
   margin: 10px;
   padding: 0 1.5em;
-  min-height: 9.2em;
+  min-height: 180px;
   width:718px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
