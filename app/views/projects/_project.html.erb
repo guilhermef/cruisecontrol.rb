@@ -10,32 +10,23 @@
 
     <div class="recent_builds">
 
-      <% recent_builds = project.last_five_builds %>
+
 
       <span class="lead">
-        <%= recent_builds.first ? 'build ' : '<span class="build_status">Never built</span>' %>
+        <%= project.last_build ? 'build ' : '<span class="build_status">Never built</span>' %>
         <br/>
         <%= link_to image_tag('rss_light.gif'), :action => 'show', :id => project.name, :format => 'rss' %>
       </span>
 
-      <% unless recent_builds.empty? %>
+      <% unless project.last_build.nil? %>
 		<span class="commit-picture">
 			<img src="<%= gravatar_url_for project.last_build.email, { :rating => 'R' } %>"/>
 		</span>
         <ul class="builds_list">
-          <% recent_builds.each do |build| %>
-            <% if build == recent_builds.first %>
-                <li class="build_summary">
-					<div> <%= show_mail_builder build.email %> </div>
-					<%= link_to_build_with_elapsed_time(project, build) %>
+          <li class="build_summary">
+					<div> <%= show_mail_builder project.last_build.email %> </div>
+					<%= link_to_build_with_elapsed_time(project, project.last_build) %>
 				</li>
-            <% else %>
-                <li class="build_summary">
-					<div> <%= show_mail_builder build.email %> </div>
-					<%= link_to_build(project, build) %>
-				</li>
-            <% end %>
-          <% end %>
         </ul>
       <% end %>
     </div>
@@ -68,7 +59,7 @@
   </span>
 
   <span class="build_details">
-    <% latest_build = recent_builds.first %>
+    <% latest_build = project.last_build %>
     <% if latest_build %>
       <% if latest_build.incomplete? %>
         <div>
